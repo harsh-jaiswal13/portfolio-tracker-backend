@@ -1,0 +1,181 @@
+{
+  "user_id": 1,
+  "name" : "John Doe",
+  "stocks": [
+    {
+      "stock": "HDFC Bank",
+      "symbol": "HDFCBANK",
+      "category": "Financial Sector",
+      "purchasePrice": 1490,
+      "quantity": 50
+    },
+    {
+      "stock": "Bajaj Finance",
+      "symbol": "BAJFINANCE",
+      "category": "Financial Sector",
+      "purchasePrice": 6466,
+      "quantity": 15
+    },
+    {
+      "stock": "ICICI Bank",
+      "symbol": "ICICIBANK",
+      "category": "Financial Sector",
+      "purchasePrice": 780,
+      "quantity": 84
+    },
+    {
+      "stock": "Bajaj Housing",
+      "symbol": "BAJAJHFL",
+      "category": "Financial Sector",
+      "purchasePrice": 130,
+      "quantity": 504
+    },
+    {
+      "stock": "Affle India",
+      "symbol": "AFFLE",
+      "category": "Tech Sector",
+      "purchasePrice": 1151,
+      "quantity": 50
+    },
+    {
+      "stock": "LTI Mindtree",
+      "symbol": "LTIM",
+      "category": "Tech Sector",
+      "purchasePrice": 4775,
+      "quantity": 16
+    },
+    {
+      "stock": "KPIT Tech",
+      "symbol": "KPITTECH",
+      "category": "Tech Sector",
+      "purchasePrice": 672,
+      "quantity": 61
+    },
+    {
+      "stock": "Tata Tech",
+      "symbol": "TATATECH",
+      "category": "Tech Sector",
+      "purchasePrice": 1072,
+      "quantity": 63
+    },
+    {
+      "stock": "BLS E-Services",
+      "symbol": "BLSE",
+      "category": "Tech Sector",
+      "purchasePrice": 232,
+      "quantity": 191
+    },
+    {
+      "stock": "Tanla",
+      "symbol": "TANLA",
+      "category": "Tech Sector",
+      "purchasePrice": 1134,
+      "quantity": 45
+    },
+    {
+      "stock": "Dmart",
+      "symbol": "DMART",
+      "category": "Consumer",
+      "purchasePrice": 3777,
+      "quantity": 27
+    },
+    {
+      "stock": "Tata Consumer",
+      "symbol": "TATACONSUM",
+      "category": "Consumer",
+      "purchasePrice": 845,
+      "quantity": 90
+    },
+    {
+      "stock": "Pidilite",
+      "symbol": "PIDILITIND",
+      "category": "Consumer",
+      "purchasePrice": 2376,
+      "quantity": 36
+    },
+    {
+      "stock": "Tata Power",
+      "symbol": "TATAPOWER",
+      "category": "Power",
+      "purchasePrice": 224,
+      "quantity": 225
+    },
+    {
+      "stock": "KPI Green",
+      "symbol": "KPIGREEN",
+      "category": "Power",
+      "purchasePrice": 875,
+      "quantity": 50
+    },
+    {
+      "stock": "Suzlon",
+      "symbol": "SUZLON",
+      "category": "Power",
+      "purchasePrice": 44,
+      "quantity": 450
+    },
+    {
+      "stock": "Gensol",
+      "symbol": "GENSOL",
+      "category": "Power",
+      "purchasePrice": 998,
+      "quantity": 45
+    },
+    {
+      "stock": "Hariom Pipes",
+      "symbol": "HARIOMPIPE",
+      "category": "Pipe Sector",
+      "purchasePrice": 580,
+      "quantity": 60
+    },
+    {
+      "stock": "Astral",
+      "symbol": "ASTRAL",
+      "category": "Pipe Sector",
+      "purchasePrice": 1517,
+      "quantity": 56
+    },
+    {
+      "stock": "Polycab",
+      "symbol": "POLYCAB",
+      "category": "Pipe Sector",
+      "purchasePrice": 2818,
+      "quantity": 28
+    },
+    {
+      "stock": "Clean Science",
+      "symbol": "CLEAN",
+      "category": "Others",
+      "purchasePrice": 1610,
+      "quantity": 32
+    },
+    {
+      "stock": "Deepak Nitrite",
+      "symbol": "DEEPAKNTR",
+      "category": "Others",
+      "purchasePrice": 2248,
+      "quantity": 27
+    },
+    {
+      "stock": "Fine Organic",
+      "symbol": "FINEORG",
+      "category": "Others",
+      "purchasePrice": 4284,
+      "quantity": 16
+    },
+    {
+      "stock": "Gravita",
+      "symbol": "GRAVITA",
+      "category": "Others",
+      "purchasePrice": 2037,
+      "quantity": 8
+    },
+    {
+      "stock": "SBI Life",
+      "symbol": "SBILIFE",
+      "category": "Others",
+      "purchasePrice": 1197,
+      "quantity": 49
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+    "stocks": [
+      { "stock": "HDFC Bank", "symbol": "HDFCBANK", "category": "Financial Sector" },
+      { "stock": "Bajaj Finance", "symbol": "BAJFINANCE", "category": "Financial Sector" },
+      { "stock": "ICICI Bank", "symbol": "ICICIBANK", "category": "Financial Sector" },
+      { "stock": "Bajaj Housing", "symbol": "BAJAJHFL", "category": "Financial Sector" },
+  
+      { "stock": "Affle India", "symbol": "AFFLE", "category": "Tech Sector" },
+      { "stock": "LTI Mindtree", "symbol": "LTIM", "category": "Tech Sector" },
+      { "stock": "KPIT Tech", "symbol": "KPITTECH", "category": "Tech Sector" },
+      { "stock": "Tata Tech", "symbol": "TATATECH", "category": "Tech Sector" },
+      { "stock": "BLS E-Services", "symbol": "BLSE", "category": "Tech Sector" },
+      { "stock": "Tanla", "symbol": "TANLA", "category": "Tech Sector" },
+  
+      { "stock": "Dmart", "symbol": "DMART", "category": "Consumer" },
+      { "stock": "Tata Consumer", "symbol": "TATACONSUM", "category": "Consumer" },
+      { "stock": "Pidilite", "symbol": "PIDILITIND", "category": "Consumer" },
+  
+      { "stock": "Tata Power", "symbol": "TATAPOWER", "category": "Power" },
+      { "stock": "KPI Green", "symbol": "KPIGREEN", "category": "Power" },
+      { "stock": "Suzlon", "symbol": "SUZLON", "category": "Power" },
+      { "stock": "Gensol", "symbol": "GENSOL", "category": "Power" },
+  
+      { "stock": "Hariom Pipes", "symbol": "HARIOMPIPE", "category": "Pipe Sector" },
+      { "stock": "Astral", "symbol": "ASTRAL", "category": "Pipe Sector" },
+      { "stock": "Polycab", "symbol": "POLYCAB", "category": "Pipe Sector" },
+  
+      { "stock": "Clean Science", "symbol": "CLEAN", "category": "Others" },
+      { "stock": "Deepak Nitrite", "symbol": "DEEPAKNTR", "category": "Others" },
+      { "stock": "Fine Organic", "symbol": "FINEORG", "category": "Others" },
+      { "stock": "Gravita", "symbol": "GRAVITA", "category": "Others" },
+      { "stock": "SBI Life", "symbol": "SBILIFE", "category": "Others" }
+    ]
+  }
+  

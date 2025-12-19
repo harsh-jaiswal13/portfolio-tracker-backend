@@ -9,7 +9,7 @@ const app = express();
 
 // CORS middleware - allowing access from our frontend and local dev environments
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://10.48.161.79:3000'],
+  origin: ['https://portfolio-tracker-frontend-vlzb-342usbyuo.vercel.app','http://localhost:3000', 'http://127.0.0.1:3000', 'http://10.48.161.79:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,

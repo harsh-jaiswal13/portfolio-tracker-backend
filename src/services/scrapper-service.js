@@ -14,23 +14,21 @@ export class WebScraper {
   }
 
   async getBrowser() {
-
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
-  
       console.log(' Launching browser...');
-  
       
-  
       const isProduction = process.env.NODE_ENV === 'production';
-  
       
-  
+      // Construct the correct Chrome path
+      const chromePath = isProduction 
+        ? '/tmp/puppeteer/chrome/linux-143.0.7499.42/chrome-linux64/chrome'
+        : puppeteer.executablePath();
+      
+      console.log('Using Chrome at:', chromePath);
+      
       this.sharedBrowser = await puppeteer.launch({
-  
         headless: 'new',
-  
         args: [
-  
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
@@ -49,29 +47,15 @@ export class WebScraper {
           '--single-process',
           '--window-size=800,600'
         ],
-  
-        executablePath: isProduction 
-  
-          ? process.env.PUPPETEER_EXECUTABLE_PATH 
-  
-          : puppeteer.executablePath(),
-  
+        executablePath: chromePath,
         defaultViewport: { width: 800, height: 600 },
-  
         ignoreHTTPSErrors: true,
-  
-        timeout: 60000, // Increase timeout for slower environments
-  
+        timeout: 60000,
       });
-  
       
-  
       console.log(' Browser launched');
-  
     }
-  
     return this.sharedBrowser;
-  
   }
   async getBrowser() {
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {

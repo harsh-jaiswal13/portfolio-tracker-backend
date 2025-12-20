@@ -17,14 +17,36 @@ export class WebScraper {
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
       console.log(' Launching browser...');
       
-      const isProduction = process.env.NODE_ENV === 'production';
+      // Find Chrome in /tmp/puppeteer directory
+      const fs = require('fs');
+      const path = require('path');
       
-      // Construct the correct Chrome path
-      const chromePath = isProduction 
-        ? '/tmp/puppeteer/chrome/linux-143.0.7499.42/chrome-linux64/chrome'
-        : puppeteer.executablePath();
+      let executablePath;
       
-      console.log('Using Chrome at:', chromePath);
+      try {
+        // Look for Chrome in the expected location
+        const chromeBaseDir = '/tmp/puppeteer/chrome';
+        const versions = fs.readdirSync(chromeBaseDir);
+        
+        if (versions.length > 0) {
+          // Get the first (and likely only) version directory
+          const versionDir = versions[0];
+          executablePath = path.join(chromeBaseDir, versionDir, 'chrome-linux64', 'chrome');
+          
+          console.log('Found Chrome at:', executablePath);
+          
+          // Verify it exists
+          if (!fs.existsSync(executablePath)) {
+            throw new Error(`Chrome executable not found at ${executablePath}`);
+          }
+        } else {
+          throw new Error('No Chrome version found in /tmp/puppeteer/chrome');
+        }
+      } catch (error) {
+        console.error('Error finding Chrome:', error.message);
+        console.log('Falling back to puppeteer.executablePath()');
+        executablePath = puppeteer.executablePath();
+      }
       
       this.sharedBrowser = await puppeteer.launch({
         headless: 'new',
@@ -47,34 +69,13 @@ export class WebScraper {
           '--single-process',
           '--window-size=800,600'
         ],
-        executablePath: chromePath,
+        executablePath,
         defaultViewport: { width: 800, height: 600 },
         ignoreHTTPSErrors: true,
         timeout: 60000,
       });
       
-      console.log(' Browser launched');
-    }
-    return this.sharedBrowser;
-  }
-  async getBrowser() {
-    if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
-      console.log(' Launching browser...');
-      this.sharedBrowser = await puppeteer.launch({
-        headless: 'new',
-        args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-gpu',
-          '--disable-software-rasterizer',
-          '--window-size=800,600'
-        ],
-        
-        defaultViewport: { width: 800, height: 600 },
-        ignoreHTTPSErrors: true,
-      });
-      console.log(' Browser launched');
+      console.log(' Browser launched successfully');
     }
     return this.sharedBrowser;
   }

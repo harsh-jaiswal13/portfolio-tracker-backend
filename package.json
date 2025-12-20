@@ -4,7 +4,7 @@
   "description": "Stock data service using multiple providers",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/main.js",
+   "start": "node src/install-chrome.js && node src/main.js",
     "dev": "nodemon src/main.js",
     "postinstall": "node node_modules/puppeteer/install.mjs"
   },

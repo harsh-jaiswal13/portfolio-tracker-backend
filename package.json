@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/main.js",
     "dev": "nodemon src/main.js",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "postinstall": "node node_modules/puppeteer/install.mjs"
   },
   "type": "module",
   "dependencies": {

@@ -14,6 +14,66 @@ export class WebScraper {
   }
 
   async getBrowser() {
+
+    if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
+  
+      console.log(' Launching browser...');
+  
+      
+  
+      const isProduction = process.env.NODE_ENV === 'production';
+  
+      
+  
+      this.sharedBrowser = await puppeteer.launch({
+  
+        headless: 'new',
+  
+        args: [
+  
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--disable-software-rasterizer',
+          '--disable-extensions',
+          '--disable-background-networking',
+          '--disable-default-apps',
+          '--disable-sync',
+          '--disable-translate',
+          '--hide-scrollbars',
+          '--metrics-recording-only',
+          '--mute-audio',
+          '--no-first-run',
+          '--no-zygote',
+          '--single-process',
+          '--window-size=800,600'
+        ],
+  
+        executablePath: isProduction 
+  
+          ? process.env.PUPPETEER_EXECUTABLE_PATH 
+  
+          : puppeteer.executablePath(),
+  
+        defaultViewport: { width: 800, height: 600 },
+  
+        ignoreHTTPSErrors: true,
+  
+        timeout: 60000, // Increase timeout for slower environments
+  
+      });
+  
+      
+  
+      console.log(' Browser launched');
+  
+    }
+  
+    return this.sharedBrowser;
+  
+  }
+  async getBrowser() {
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
       console.log(' Launching browser...');
       this.sharedBrowser = await puppeteer.launch({
@@ -26,6 +86,7 @@ export class WebScraper {
           '--disable-software-rasterizer',
           '--window-size=800,600'
         ],
+        
         defaultViewport: { width: 800, height: 600 },
         ignoreHTTPSErrors: true,
       });

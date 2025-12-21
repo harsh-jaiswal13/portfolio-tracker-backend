@@ -1,6 +1,4 @@
 import puppeteer from 'puppeteer';
-import fs from 'fs';
-import path from 'path';
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -14,45 +12,9 @@ export class WebScraper {
     this.lastRequestTime = 0;
   }
 
-  // Helper to locate chrome binary in tmp directory
-  findChromeExecutable() {
-    try {
-      const chromeBaseDir = '/tmp/puppeteer/chrome';
-      
-      if (!fs.existsSync(chromeBaseDir)) {
-        console.log('Chrome directory not found, using default path');
-        return puppeteer.executablePath();
-      }
-      
-      const versions = fs.readdirSync(chromeBaseDir);
-      
-      if (versions.length === 0) {
-        console.log('No chrome versions found, using default');
-        return puppeteer.executablePath();
-      }
-      
-      const versionDir = versions[0];
-      const chromePath = path.join(chromeBaseDir, versionDir, 'chrome-linux64', 'chrome');
-      
-      if (!fs.existsSync(chromePath)) {
-        console.log('Chrome binary not found at expected location, using default');
-        return puppeteer.executablePath();
-      }
-      
-      console.log('Using Chrome at:', chromePath);
-      return chromePath;
-      
-    } catch (error) {
-      console.error('Error locating Chrome:', error.message);
-      return puppeteer.executablePath();
-    }
-  }
-
   async getBrowser() {
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
       console.log('Launching browser...');
-      
-      const executablePath = this.findChromeExecutable();
       
       this.sharedBrowser = await puppeteer.launch({
         headless: 'new',
@@ -73,15 +35,18 @@ export class WebScraper {
           '--no-first-run',
           '--no-zygote',
           '--single-process',
+          '--disable-dev-tools',
+          '--disable-blink-features=AutomationControlled',
           '--window-size=800,600'
         ],
-        executablePath,
+        // Let Puppeteer use its bundled Chrome
+        // executablePath is automatically set by Puppeteer
         defaultViewport: { width: 800, height: 600 },
         ignoreHTTPSErrors: true,
         timeout: 60000,
       });
       
-      console.log('Browser launched');
+      console.log('Browser launched successfully');
     }
     return this.sharedBrowser;
   }

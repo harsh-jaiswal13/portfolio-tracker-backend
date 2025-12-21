@@ -16,8 +16,9 @@ export class WebScraper {
     if (!this.sharedBrowser || !this.sharedBrowser.isConnected()) {
       console.log('Launching browser...');
       
-      this.sharedBrowser = await puppeteer.launch({
-        headless: 'new',
+      // Puppeteer configuration for Render.com
+      const launchOptions = {
+        headless: 'new', // Must be 'new' or true for Render
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
@@ -39,13 +40,18 @@ export class WebScraper {
           '--disable-blink-features=AutomationControlled',
           '--window-size=800,600'
         ],
-        // Let Puppeteer use its bundled Chrome
-        // executablePath is automatically set by Puppeteer
         defaultViewport: { width: 800, height: 600 },
         ignoreHTTPSErrors: true,
         timeout: 60000,
-      });
+      };
+
+      // Only set executablePath if explicitly provided via environment variable
+      // This allows Puppeteer to use its bundled Chrome
+      if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+        launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+      }
       
+      this.sharedBrowser = await puppeteer.launch(launchOptions);
       console.log('Browser launched successfully');
     }
     return this.sharedBrowser;
